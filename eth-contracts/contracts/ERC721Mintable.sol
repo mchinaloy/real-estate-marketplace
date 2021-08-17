@@ -16,12 +16,14 @@ contract Ownable {
 
     address private _owner;
 
-    constructor() {
+    event OwnershipTransferred(address from, address to);
+
+    constructor() public {
         _owner = msg.sender;
     }
 
     modifier onlyOwner() {
-        require(msg.sender == _owner);
+        require(msg.sender == _owner, "Must be the contract owner");
         _;
     }
 
@@ -32,7 +34,10 @@ contract Ownable {
     function transferOwnership(address newOwner) public onlyOwner {
         // TODO add functionality to transfer control of the contract to a newOwner.
         // make sure the new owner is a real address
-
+        require(newOwner != address(0));
+        address memory from = _owner;
+        _owner = newOwner;
+        emit OwnershipTransferred(from, _owner);
     }
 }
 
@@ -42,6 +47,33 @@ contract Ownable {
 //  3) create an internal constructor that sets the _paused variable to false
 //  4) create 'whenNotPaused' & 'paused' modifier that throws in the appropriate situation
 //  5) create a Paused & Unpaused event that emits the address that triggered the event
+
+contract Pausable is Ownable {
+
+    bool private _paused;
+
+    event Paused(address sender);
+    event Unpaused(address sender);
+
+    constructor() public {
+        _paused = false;
+    }
+
+    modifier whenNotPaused() {
+        require(_paused == false;)
+        _;
+    }
+
+    modifier paused() {
+        require(paused == true);
+        _;
+    }
+
+    function setPaused(bool paused) onlyOwner {
+        _paused = paused;
+    }
+
+}
 
 contract ERC165 {
     bytes4 private constant _INTERFACE_ID_ERC165 = 0x01ffc9a7;
