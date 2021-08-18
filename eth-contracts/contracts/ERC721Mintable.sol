@@ -497,7 +497,6 @@ contract ERC721Metadata is ERC721Enumerable, usingOraclize {
      *     bytes4(keccak256('tokenURI(uint256)'))
      */
 
-
     constructor (string memory name, string memory symbol, string memory baseTokenURI) public {
         // TODO: set instance var values
         _name = name;
@@ -507,12 +506,22 @@ contract ERC721Metadata is ERC721Enumerable, usingOraclize {
     }
 
     // TODO: create external getter functions for name, symbol, and baseTokenURI
+    function getName() external returns(string) {
+        return _name;
+    }
+
+    function getSymbol() external returns(string) {
+        return _symbol;
+    }
+
+    function getBaseTokenURI() external returns(string) {
+        return _baseTokenURI;
+    }
 
     function tokenURI(uint256 tokenId) external view returns (string memory) {
         require(_exists(tokenId));
         return _tokenURIs[tokenId];
     }
-
 
     // TODO: Create an internal function to set the tokenURI of a specified tokenId
     // It should be the _baseTokenURI + the tokenId in string form
@@ -520,6 +529,12 @@ contract ERC721Metadata is ERC721Enumerable, usingOraclize {
     // TIP #2: you can also use uint2str() to convert a uint to a string
         // see https://github.com/oraclize/ethereum-api/blob/master/oraclizeAPI_0.5.sol for strConcat()
     // require the token exists before setting
+
+    function setTokenURI(uint tokenId) internal {
+        require(_exists(tokenId) == true, "Token must exist.");
+        string tokenAsString = usingOraclize.uint2str(tokenId);
+        _tokenURIs[tokenId] = usingOraclize.strConcat(_baseTokenUR, tokenAsString);
+    }
 
 }
 
