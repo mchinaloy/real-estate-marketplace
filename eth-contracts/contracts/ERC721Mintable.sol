@@ -27,7 +27,7 @@ contract Ownable {
         _;
     }
 
-    function getOwner() public returns(address) {
+    function getOwner() public view returns(address) {
         return _owner;
     }
 
@@ -152,7 +152,7 @@ contract ERC721 is Pausable, ERC165 {
     function balanceOf(address owner) public view returns (uint256) {
         // TODO return the token balance of given address
         // TIP: remember the functions to use for Counters. you can refresh yourself with the link above
-        _ownedTokensCount[owner].current();
+        return _ownedTokensCount[owner].current();
     }
 
     function ownerOf(uint256 tokenId) public view returns (address) {
@@ -254,7 +254,7 @@ contract ERC721 is Pausable, ERC165 {
         _ownedTokensCount[to].increment();
 
         // TODO emit Transfer event
-        emit Transfer(address(0), to, tokenId);
+        emit Transfer(msg.sender, to, tokenId);
     }
 
     // @dev Internal function to transfer ownership of a given token ID to another address.
@@ -389,9 +389,7 @@ contract ERC721Enumerable is ERC165, ERC721 {
      */
     function _mint(address to, uint256 tokenId) internal {
         super._mint(to, tokenId);
-
         _addTokenToOwnerEnumeration(to, tokenId);
-
         _addTokenToAllTokensEnumeration(tokenId);
     }
 
@@ -547,9 +545,9 @@ contract ERC721Metadata is ERC721Enumerable, usingOraclize {
 //      -returns a true boolean upon completion of the function
 //      -calls the superclass mint and setTokenURI functions
 
-contract ManshuToken is ERC721Metadata("Manshu Token", "Manshu", "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/") {
+contract MaoMaoToken is ERC721Metadata("MaoMao Token", "MaoMao", "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/") {
 
-    function mint(address to, uint256 tokenId, string memory tokenURI) public onlyOwner returns(bool) {
+    function mint(address to, uint256 tokenId) public onlyOwner returns(bool) {
         super._mint(to, tokenId);
         super.setTokenURI(tokenId);
         return true;
