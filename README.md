@@ -2,6 +2,16 @@
 
 The capstone will build upon the knowledge you have gained in the course in order to build a decentralized housing product. 
 
+# TODO
+1) Update SolnSquareVerifier contract (mint function to check for uniqueness/proof used before)
+2) Re-deploy to Rinkeby
+3) Add solutions to contract
+4) Mint tokens to contract
+5) Link OpenSea to contract
+7) List 5 tokens for sale
+6) Purchase 5 tokens
+7) Update documentation
+
 # Contract Addresses on Rinkeby
 
 SquareVerifier: 0xff069c0E3449de5F31Dfd5bd373Cd04CD528BD6E
