@@ -1,11 +1,11 @@
 pragma solidity >=0.4.21 <0.6.0;
 
 import "./ERC721Mintable.sol";
-import "./SquareVerifier.sol";
+import "./Verifier.sol";
 
 // TODO define a contract call to the zokrates generated solidity contract <Verifier> or <renamedVerifier>
 // TODO define another contract named SolnSquareVerifier that inherits from your ERC721Mintable class
-contract SolnSquareVerifier is MaoMaoToken, SquareVerifier {
+contract SolnSquareVerifier is MaoMaoToken, Verifier {
 
     // TODO define a solutions struct that can hold an index & an address
     struct Solution {
@@ -13,8 +13,6 @@ contract SolnSquareVerifier is MaoMaoToken, SquareVerifier {
         address sender;
         bool verified;
     }
-
-    SquareVerifier squareVerifier;
 
     // TODO define an array of the above struct
     mapping(uint256 => Solution) uniqueSolutionsByTokenId;
@@ -25,16 +23,12 @@ contract SolnSquareVerifier is MaoMaoToken, SquareVerifier {
     // TODO Create an event to emit when a solution is added
     event SolutionAdded(bytes32 id, address sender, uint256 tokenId);
 
-    constructor(address verifier) public {
-        squareVerifier = SquareVerifier(verifier);
-    }
-
     // TODO Create a function to add the solutions to the array and emit the event
     function addSolution(uint[2] memory a, uint[2][2] memory b, uint[2] memory c, uint[2] memory input, uint256 tokenId) public {
         bytes32 id = keccak256(abi.encodePacked(a, b, c, input));
 
         require(uniqueSolutions[id].verified == false, "Solution already exists");
-        require(squareVerifier.verifyTx(a, b, c, input), "Provided proof is incorrect");
+        require(verifyTx(a, b, c, input) == true, "Provided proof is incorrect");
 
         Solution memory newSolution = Solution({
             id: id,

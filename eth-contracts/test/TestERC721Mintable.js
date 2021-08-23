@@ -1,4 +1,4 @@
-var ERC721MintableComplete = artifacts.require('ManshuToken');
+var ERC721MintableComplete = artifacts.require('MaoMaoToken');
 var BigNumber = require('bignumber.js');
 
 contract('TestERC721Mintable', accounts => {
@@ -11,11 +11,11 @@ contract('TestERC721Mintable', accounts => {
             this.contract = await ERC721MintableComplete.new({from: account_one});
 
             for(let i = 0; i < 5; i++) {
-                await this.contract.mint(account_one, i, "a_token_uri_" + i);
+                await this.contract.mint(account_one, i);
             }
 
             for(let i = 5; i < 10; i++) {
-                await this.contract.mint(account_two, i, "b_token_uri_" + i);
+                await this.contract.mint(account_two, i);
             }
         })
 
@@ -74,7 +74,7 @@ contract('TestERC721Mintable', accounts => {
 
             // act
             try {
-                await this.contract.mint(account_two, 11, "c_token_uri", {from: account_two});
+                await this.contract.mint(account_two, 11, {from: account_two});
             } catch(e) {
                 mintFailed = true;
             }
