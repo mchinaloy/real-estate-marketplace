@@ -14,6 +14,7 @@
     "lite-server": "2.4.0"
   },
   "dependencies": {
+    "bignumber.js": "^9.0.1",
     "openzeppelin-solidity": "2.2",
     "solc": "^0.5.2",
     "solc-js": "^0.5.2"
