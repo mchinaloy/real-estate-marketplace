@@ -11,21 +11,27 @@ const infuraKey = "xxx";
 const contractAddress = "0x2541C62B12C2F717c038ed352dD161f02522E3F2";
 
 (async() => {
+
   const provider = await new HDWalletProvider(mnemonic, `https://rinkeby.infura.io/v3/${infuraKey}`, 0);
   const web3 = await new Web3(provider);
   const accounts = await web3.eth.getAccounts();
   const contract = await new web3.eth.Contract(contractFile.abi, contractAddress, { gasLimit: "4500000" });
 
-  console.log(`Contract currently has ${(await contract.methods.totalSupply().call()).toString()} tokens`);
+  let tokenSupply = await contract.methods.totalSupply().call().toString();
+
+  console.log(`Contract currently has ${tokenSupply} tokens`);
   console.log(`Minting:\n tokenId: ${tokenId}\n address ${accounts[0]}`);
 
   try {
     let result = await contract.methods.mint(accounts[0], tokenId).send({ from: accounts[0], gas: 2500000});
     console.log(result)
-  } catch(err) {
-    throw err
+  } catch(e) {
+    throw e
   }
 
-  console.log(`Contract now has ${(await contract.methods.totalSupply().call()).toString()} tokens`);
+  tokenSupply = await contract.methods.totalSupply().call().toString();
+
+  console.log(`Contract now has ${tokenSupply} tokens`);
   process.exit(1);
+
 })();
