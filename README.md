@@ -2,20 +2,10 @@
 
 The capstone will build upon the knowledge you have gained in the course in order to build a decentralized housing product. 
 
-# TODO
-1) Update SolnSquareVerifier contract (mint function to check for uniqueness/proof used before)
-2) Re-deploy to Rinkeby
-3) Add solutions to contract
-4) Mint tokens to contract
-5) Link OpenSea to contract
-7) List 5 tokens for sale
-6) Purchase 5 tokens
-7) Update documentation
-
 # Contract Addresses on Rinkeby
 
-SquareVerifier: 0xff069c0E3449de5F31Dfd5bd373Cd04CD528BD6E
-SolnSquareVerifier: 0x4b9eC2fA2A4d3651Fd984780C5b1bFA89a2Dc0e1
+SquareVerifier: 0x8CD03E311602608710c50aDA88933b2fE884E6F7
+SolnSquareVerifier: 0x2541C62B12C2F717c038ed352dD161f02522E3F2
 
 # SolnSquareVerifier Contract ABI
 ```
@@ -649,11 +639,18 @@ SolnSquareVerifier: 0x4b9eC2fA2A4d3651Fd984780C5b1bFA89a2Dc0e1
       "stateMutability": "nonpayable",
       "type": "function"
     }
-]
+  ]
 ```
 
 # OpenSea Marketplace Storefront
-https://testnets.opensea.io/collection/maomao-real-estate
+https://testnets.opensea.io/collection/unidentified-contract-b3f3aztq1v
+
+# OpenSea Purchases
+https://rinkeby.etherscan.io/tx/0xbe2d68b624eed28ebb603c2330219448d15723c1521083d0ad1e971bf6030e0c
+https://rinkeby.etherscan.io/tx/0x55dd06038a2729d43ff1601babafd7de39bd37de80b95f5b499a6e688f9e1ff7
+https://rinkeby.etherscan.io/tx/0xfeb87fe458592fd89a531b7eb5db9ca398e271735a1de22dbd8659a54a78fef8
+https://rinkeby.etherscan.io/tx/0xb49751c607aff8e64a02ce2e98d533fb19795b715fc23cb6b14b73f93c6901cb
+https://rinkeby.etherscan.io/tx/0xf3e91c2727894882cc50048c0e85cb16896287ed9dd50541e1d3f21b94924839
 
 # Project Resources
 
