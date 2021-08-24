@@ -4,8 +4,11 @@ The capstone will build upon the knowledge you have gained in the course in orde
 
 # Contract Addresses on Rinkeby
 
-SquareVerifier: 0x8CD03E311602608710c50aDA88933b2fE884E6F7
-SolnSquareVerifier: 0x2541C62B12C2F717c038ed352dD161f02522E3F2
+SquareVerifier: 
+`0x8CD03E311602608710c50aDA88933b2fE884E6F7`
+
+SolnSquareVerifier: 
+`0x2541C62B12C2F717c038ed352dD161f02522E3F2`
 
 # SolnSquareVerifier Contract ABI
 ```
