@@ -27,7 +27,7 @@ contract SolnSquareVerifier is MaoMaoToken, Verifier {
     function addSolution(uint[2] memory a, uint[2][2] memory b, uint[2] memory c, uint[2] memory input, uint256 tokenId) public {
         bytes32 id = keccak256(abi.encodePacked(a, b, c, input));
 
-        require(uniqueSolutions[id].verified == false, "Solution already exists");
+        require(uniqueSolutions[id].verified == false, "Solution already exists, please provide a new one");
         require(verifyTx(a, b, c, input) == true, "Provided proof is incorrect");
 
         Solution memory newSolution = Solution({
@@ -46,7 +46,7 @@ contract SolnSquareVerifier is MaoMaoToken, Verifier {
     //  - make sure the solution is unique (has not been used before)
     //  - make sure you handle metadata as well as tokenSuplly
     function mint(address to, uint256 tokenId) public returns(bool) {
-        require(uniqueSolutionsByTokenId[tokenId].verified == true);
+        require(uniqueSolutionsByTokenId[tokenId].verified == true, "A solution must be provided for this tokenId");
         super.mint(to, tokenId);
         return true;
     }
