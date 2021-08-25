@@ -5,14 +5,14 @@
 
 // Test verification with incorrect proof
 
-let SquareVerifier = artifacts.require('verifier');
+let SquareVerifier = artifacts.require('SquareVerifier');
 let squareProof = require("../../zokrates/code/square/proof.json");
 
 contract("TestSquareVerifier", accounts => {
 
     describe('Verifier Test Suite', function(){
 
-        beforeEach(async function(){
+        beforeEach(async function() {
             this.contract = await SquareVerifier.new();
         });
 

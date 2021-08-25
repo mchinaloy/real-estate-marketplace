@@ -2,6 +2,16 @@
 
 The capstone will build upon the knowledge you have gained in the course in order to build a decentralized housing product. 
 
+# Testing the code
+From the project root install the node dependencies:
+`npm install`
+
+Navigate to the directory:
+`/eth-contracts`
+
+Ensure you have a local blockchain running e.g. Ganache. Execute the tests:
+`truffle test`
+
 # Contract Addresses on Rinkeby
 
 SquareVerifier: 
