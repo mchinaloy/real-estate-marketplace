@@ -3,9 +3,9 @@
 
 const Web3 = require('web3');
 const HDWalletProvider = require('truffle-hdwallet-provider');
-const contractFile = require('./build/contracts/SolnSquareVerifier');
+const contractFile = require('../build/contracts/SolnSquareVerifier');
 
-const tokenId = 19;
+const tokenId = 5;
 const mnemonic = "xxx";
 const infuraKey = "xxx";
 const contractAddress = "0x2541C62B12C2F717c038ed352dD161f02522E3F2";
@@ -17,9 +17,6 @@ const contractAddress = "0x2541C62B12C2F717c038ed352dD161f02522E3F2";
   const accounts = await web3.eth.getAccounts();
   const contract = await new web3.eth.Contract(contractFile.abi, contractAddress, { gasLimit: "4500000" });
 
-  let tokenSupply = await contract.methods.totalSupply().call().toString();
-
-  console.log(`Contract currently has ${tokenSupply} tokens`);
   console.log(`Minting:\n tokenId: ${tokenId}\n address ${accounts[0]}`);
 
   try {
@@ -29,9 +26,6 @@ const contractAddress = "0x2541C62B12C2F717c038ed352dD161f02522E3F2";
     throw e
   }
 
-  tokenSupply = await contract.methods.totalSupply().call().toString();
-
-  console.log(`Contract now has ${tokenSupply} tokens`);
   process.exit(1);
 
 })();

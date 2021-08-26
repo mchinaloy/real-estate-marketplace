@@ -3,10 +3,10 @@
 
 const Web3 = require('web3');
 const HDWalletProvider = require('truffle-hdwallet-provider');
-const contractFile = require('./build/contracts/SolnSquareVerifier');
-const squareProof = require("../../zokrates/code/square/proofs/9/proof.json");
+const contractFile = require('../build/contracts/SolnSquareVerifier');
+const squareProof = require("../../zokrates/code/square/proofs/5/proof.json");
 
-const tokenId = 19;
+const tokenId = 5;
 const mnemonic = "xxx";
 const infuraKey = "xxx";
 const contractAddress = "0x2541C62B12C2F717c038ed352dD161f02522E3F2";
